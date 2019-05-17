@@ -18,10 +18,9 @@ nav {
   position: relative;
   white-space: nowrap;
   background: white;
-  padding: var(--underline-height) 0;
+  padding: 30px;
   margin: 2em 0;
-  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.05);
-  top: -212px;
+    top: -212px;
 }
 
 .underline {
