@@ -38,23 +38,8 @@
 
 		$conn = new DatabaseUtility();
 		$conn->connect();
-		$conn->search_acess(); 
-	
-			while ($linha=$conn->fetch(PDO::FETCH_ASSOC))                          
-			{  
-				echo "===========================================================";
-				echo "<h6> ID de Usuario: ".$linha['ID']."</h6> <br>";
-				echo "Nome: ".$linha['nome']."<br>";
-				echo "CPF: ".$linha['CPF']."<br>";
-				echo "RG: ".$linha['RG']."<br>";
-				echo "CEP ".$linha['CEP']."<br>";
-				echo "Login ".$linha['login']."<br>";
-				echo "Senha ".$linha['senha']."<br>";
-				echo "Moderador ".$linha['moderador']."<br>";
-				echo "===========================================================";
-				}
-	
-		
+		$conn->find_user(); 
+
 	?>
 
     </div>

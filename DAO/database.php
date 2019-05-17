@@ -70,13 +70,38 @@ class DatabaseUtility{
             }
             
         } 
-        
-        
-            
-            
-            
-            
-            
+
+
         }
-        
+        		
+		public function find_user (){
+			
+		$sql = "select * from usuario";
+		
+		$query = $this->pdo->query($sql);
+			
+		while ($linha=$query->fetch(PDO::FETCH_ASSOC))                          
+			{  
+				echo "============================================= <br>";
+				echo "ID de Usuario: ".$linha['ID']."<br>";
+				echo "Nome: ".$linha['nome']."<br>";
+				echo "CPF: ".$linha['CPF']."<br>";
+				echo "RG: ".$linha['RG']."<br>";
+				echo "CEP ".$linha['CEP']."<br>";
+				echo "Login ".$linha['login']."<br>";
+				echo "Senha ".$linha['senha']."<br>";
+				echo "Moderador ".$linha['moderador']."<br>";
+				
+				}
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
     }
