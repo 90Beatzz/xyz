@@ -12,10 +12,11 @@ class user_model  {
    private $login;
    private $senha;
    private $mod = [0 => "N", 1 => "S"];
+   private $set = [1 => "Atendente", 2=> "Gerente", 3=> "Administrador"];
    
    // Função de Construção da Classe
    
-   public function __construct($nome,$cpf,$rg,$cep,$login,$senha,$mod) {
+   public function __construct($nome,$cpf,$rg,$cep,$login,$senha,$mod,$set) {
        
        
        
@@ -24,12 +25,24 @@ class user_model  {
    }if ($mod == 1){
        $this->mod = $this->mod[1];
    }  
+   
+   if ($set == 1) {
+       $this->set = $this->set[1];
+   }if ($set == 2){
+       $this->set = $this->set[2];
+   } if ($set == 3){
+       $this->set = $this->set[3];
+   } 
+   
+   
+   
        $this->nome = $nome;
        $this->cpf = $cpf;
        $this->rg = $rg;
        $this->cep = $cep;
        $this->login =$login;
        $this->senha = $senha;  
+
        
    }
    
@@ -61,6 +74,12 @@ class user_model  {
        return $this->mod;
        
    }
+   
+      public function GetSetor () {
+       return $this->set;
+       
+   }
+   
            
     
     

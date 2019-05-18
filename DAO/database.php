@@ -41,11 +41,11 @@ class DatabaseUtility{
         
         //Função de Novo usuario
 
-        public function new_user_insert ($a,$b,$c,$d,$e,$f,$mod) {
+        public function new_user_insert ($a,$b,$c,$d,$e,$f,$mod,$set) {
  
-            $sql = "INSERT INTO usuario (ID,nome,CPF,RG,CEP,login,senha,moderador) VALUES(DEFAULT,'$a','$b','$c','$d','$e','$f','$mod')";
+            $sql = "INSERT INTO usuario (ID,nome,CPF,RG,CEP,login,senha,moderador,setor) VALUES(DEFAULT,'$a','$b','$c','$d','$e','$f','$mod','$set')";
             
-            $this->pdo->query($sql);
+            $this->pdo->query($sql);	
             
         }
         
@@ -65,7 +65,7 @@ class DatabaseUtility{
             
             if($a == $login && $b == $senha)  {
                 
-                header("location: ../View/user_log.html");
+                header("location: ../View/user_func.html");
                 
             }
             
@@ -87,11 +87,58 @@ class DatabaseUtility{
 				echo "Nome: ".$linha['nome']."<br>";
 				echo "CPF: ".$linha['CPF']."<br>";
 				echo "RG: ".$linha['RG']."<br>";
-				echo "CEP ".$linha['CEP']."<br>";
-				echo "Login ".$linha['login']."<br>";
-				echo "Senha ".$linha['senha']."<br>";
-				echo "Moderador ".$linha['moderador']."<br>";
+				echo "CEP: ".$linha['CEP']."<br>";
+				echo "Login: ".$linha['login']."<br>";
+				echo "Senha: ".$linha['senha']."<br>";
+				echo "Moderador: ".$linha['moderador']."<br>";
+				echo "Setor: ".$linha['setor']."<br>";
 				
+				}
+
+		}
+		
+		
+		public function find_vend () {
+			
+			$sql = "call busca_por_user";
+			
+			$query = $this->pdo->query($sql);
+			
+			while ($linha=$query->fetch(PDO::FETCH_ASSOC))                          
+			{  
+				echo "============================================= <br>";
+				echo "ID da Compra: ".$linha['id']."<br>";
+				echo "Nome do Usuario: ".$linha['nome']."<br>";
+				echo "Setor do Usuario: ".$linha['setor']."<br>";
+				echo "Valor Total da compra: R$ ".$linha['valor_total']."<br>";
+				}
+			
+			
+			
+			
+		}
+		
+		public function new_prod_insert ($a,$b,$c,$d) {
+ 
+            $sql = "INSERT INTO produto (ID,nome_prod,quant,marca,categoria) VALUES(DEFAULT,'$a','$b','$c','$d')";
+            
+            $this->pdo->query($sql);	
+            
+        }
+		
+		public function find_prod () {
+			
+			$sql = "call busca_prod";
+			
+			$query = $this->pdo->query($sql);
+			
+			while ($linha=$query->fetch(PDO::FETCH_ASSOC))                          
+			{  
+				echo "============================================= <br>";
+				echo "Nome do Produto: ".$linha['nome_prod']."<br>";
+				echo "Marca do Produto: ".$linha['marca']."<br>";
+				echo "Quantidade em Estoque: ".$linha['quant']."<br>";
+				echo "Categoria: ".$linha['categoria']."<br>";
 				}
 			
 			

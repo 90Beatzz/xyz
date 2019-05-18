@@ -6,6 +6,7 @@ use gssm;
 
 -- tabela usuario, formulario que é prenchido pelos usuarios do APP, para fazer login ao aplicativo
 
+
 create table usuario (
 ID INT not null primary key auto_increment,
 nome varchar(250),
@@ -14,22 +15,32 @@ RG varchar(11) not null,
 CEP varchar(9) not null,
 login varchar(250) not null,
 senha varchar(250) not null,
-moderador enum('S','N')
-
+moderador enum('S','N'),
+setor enum('Atendente','Gerente','Administrador')
 );
-
 -- Na tabela encomenda 
 -- Tabela encomenda, criada pelo sistema ao concluir a venda, registrando o ID do usuario responsavel pela compra, data e horario atual 
+
 
 create table encomenda (
 ID INT primary key not null auto_increment,
 ID_user INT NOT NULL,
 data_pedid timestamp,
-valor_total decimal(6,3) NOT NULL,
+valor_total decimal(7,2) NOT NULL,
 constraint foreign key (ID_user) references usuario(ID)
 
 );
 
+
+insert into encomenda (ID,ID_user,data_pedid,valor_total) values (DEFAULT,1,'2008-01-01 00:00:01',42256.33);
+
+insert into usuario values (DEFAULT,"Iago A","032.796.035-10","15484746-51","40253-190","Admin","Admin","S","Administrador");
+
+
+
+select nome, nome_prod from usuario,produto join encom_prod where usuario.id = encom_prod.ID_user;
+
+ 
 -- Tabela Produto, cada produto possui seu ID, Seu nome, Quantidade em Estoque, Marca e Categoria
 
 Create table produto (
@@ -39,6 +50,13 @@ quant INT,
 marca varchar(100),
 categoria varchar(100)
 );
+
+
+insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Feijão',100,'Mariazinha Alimentos','Alimento');
+insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Arroz',100,'Joãozinho Alimentos','Alimento');
+insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Macarrão',100,'Macarrões Saborosos','Alimento');
+insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Carne Shark',100,'Quero carne','Alimento');
+
 
 -- A Tabela "Encom_prod" relaciona a ENCOMENDA feita pelo USUARIO a tabela de PRODUTOS VENDIDOS especificando o VALOR TOTAL
 -- Atributos:
@@ -55,7 +73,7 @@ constraint foreign key (ID_prod) references produto(ID)
 
 
 insert into produto values (DEFAULT,"Feijão",20,"Pretinho","Alimento");
-insert into usuario values (DEFAULT,"Iago A","032.796.035-10","15484746-51","40253-190","Admin","Admin","S");
+
 
 -- ID da encomenda gerada pelo backend
 
@@ -91,4 +109,16 @@ call login;
 
 select (login),md5(senha) from usuario;
 
+
+DELIMITER $$
+USE `gssm`$$
+CREATE PROCEDURE `busca_por_user` ()
+BEGIN
+
+	select encomenda.id as 'ID da encomenda',usuario.nome as 'Usuario Responsavel', encomenda.valor_total 'Valor de compra' from usuario,encomenda where usuario.id = ID_user;
+
+
+END$$
+
+DELIMITER ;
 
