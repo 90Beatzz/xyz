@@ -179,15 +179,74 @@ class DatabaseUtility{
 		}
 		
 		
+		public function encon_prod_insert ($key,$prod1,$qnt1,$prod2,$qnt2,$prod3,$qnt3,$prod4,$qnt4,$prod5,$qnt5){
+			
+			
+			// se campos do produto 1 e quantidade foram preenchidos , inserir pedido ao banco
+			
+			
+			if (isset($prod1,$qnt1)) {
+				$sql = "insert into encom_prod (ID_encom,ID_prod,quant_prod) values ('$key','$prod1','$qnt1')";
+				$query = $this->pdo->query($sql);
+				$sql = null;			
+			}
+			
+			// se campos do produto 2 e quantidade foram preenchidos , inserir pedido ao banco
+			
+			if (isset($prod2,$qnt2)) {
+				$sql = "insert into encom_prod (ID_encom,ID_prod,quant_prod) values ('$key','$prod2','$qnt2')";
+				$query = $this->pdo->query($sql);
+				$sql = null;			
+			}
+			
+			// se campos do produto 3 e quantidade foram preenchidos , inserir pedido ao banco
+			
+			if (isset($prod3,$qnt3)) {
+				$sql = "insert into encom_prod (ID_encom,ID_prod,quant_prod) values ('$key','$prod3','$qnt3')";
+				$query = $this->pdo->query($sql);
+				$sql = null;			
+			}
+			
+			// se campos do produto 4 e quantidade foram preenchidos , inserir pedido ao banco
+			
+			if (isset($prod4,$qnt4)) {
+				$sql = "insert into encom_prod (ID_encom,ID_prod,quant_prod) values ('$key','$prod4','$qnt4')";
+				$query = $this->pdo->query($sql);
+				$sql = null;			
+			}
+			
+			// se campos do produto 5 e quantidade foram preenchidos , inserir pedido ao banco
+			
+			if (isset($prod5,$qnt5)) {
+				$sql = "insert into encom_prod (ID_encom,ID_prod,quant_prod) values ('$key','$prod5','$qnt5')";
+				$query = $this->pdo->query($sql);
+				$sql = null;			
+			}
+			
+			
+		
+					
 		
 		
 		
+			
+		}
 		
+		public function encon_insert ($key,$user_id,$data_atual,$valortotal){
+			
+			$sql = "insert into encomenda (ID,ID_user,data_pedid,valor_total) values ('$key','$user_id','$data_atual','$valortotal')";
+			
+			$query = $this->pdo->query($sql);
+
+		}
 		
-		
-		
-		
-		
+		public function prod_inser(){
+			
+			
+			
+			
+			
+		}
 		
 		
 		

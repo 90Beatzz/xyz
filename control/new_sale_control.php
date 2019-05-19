@@ -4,44 +4,47 @@
 // require '../DAO/conect.php';
 require_once '../DAO/database.php';
 
+require_once '../model/sale_model.php';
+
+
+
+	$venda = new sale_model;
+	$key = $venda->keygenerate();
+	$conn = new DatabaseUtility();
+	$conn->connect();
 
 
 //Verificar se algum campo solicitado está vazio
 
-
-
+	$valortotal = 0;
+	
 if (!empty($_POST['prod1'])&& $_POST['qnt1'] != 0) {
 		
 	
-	$prod = $_POST["prod1"];
+	$prod1 = $_POST["prod1"];
 	
-	$qnt = $_POST["qnt1"];
+	$qnt1 = $_POST["qnt1"];
+		
+	$total_prod1 = $conn->calc_sale($prod1,$qnt1);
+			
+	$valortotal = $total_prod1;
 	
-	$conn = new DatabaseUtility();
-	
-    $conn->connect();
-	
-	$prod1 = $conn->calc_sale($prod,$qnt);
-	
-	echo $prod1."<br>";
-	
+		
 	
 	} 
 	
 	if (!empty($_POST['prod2'])&& $_POST['qnt2'] != 0) {
 		
 	
-	$prod = $_POST["prod2"];
+	$prod2 = $_POST["prod2"];
 	
-	$qnt = $_POST["qnt2"];
+	$qnt2 = $_POST["qnt2"];
 	
-	$conn = new DatabaseUtility();
+		
+	$total_prod2 = $conn->calc_sale($prod2,$qnt2);
 	
-    $conn->connect();
+	$valortotal = $valortotal+$total_prod2;
 	
-	$prod2 = $conn->calc_sale($prod,$qnt);
-	
-	echo $prod2."<br>";
 	
 	
 	} 
@@ -49,17 +52,16 @@ if (!empty($_POST['prod1'])&& $_POST['qnt1'] != 0) {
 	if (!empty($_POST['prod3'])&& $_POST['qnt3'] != 0) {
 		
 	
-	$prod = $_POST["prod3"];
+	$prod3 = $_POST["prod3"];
 	
-	$qnt = $_POST["qnt3"];
+	$qnt3 = $_POST["qnt3"];
 	
-	$conn = new DatabaseUtility();
+		
+	$total_prod3 = $conn->calc_sale($prod3,$qnt3);
 	
-    $conn->connect();
+	$valortotal = $valortotal+$total_prod3;
+
 	
-	$prod3 = $conn->calc_sale($prod,$qnt);
-	
-	echo $prod3."<br>";
 	
 	
 	} 
@@ -67,42 +69,65 @@ if (!empty($_POST['prod1'])&& $_POST['qnt1'] != 0) {
 	if (!empty($_POST['prod4'])&& $_POST['qnt4'] != 0) {
 		
 	
-	$prod = $_POST["prod4"];
+	$prod4 = $_POST["prod4"];
 	
-	$qnt = $_POST["qnt4"];
+	$qnt4 = $_POST["qnt4"];
 	
-	$conn = new DatabaseUtility();
+		
+	// calcular valor de produto 4
 	
-    $conn->connect();
+	$total_prod4 = $conn->calc_sale($prod4,$qnt4);
 	
-	$prod4 = $conn->calc_sale($prod,$qnt);
+	// somar valor total
 	
-	echo $prod4."<br>";
 	
+	$valortotal = $valortotal+$total_prod4;
+	
+		
+		
 	
 	} 
 	
 	if (!empty($_POST['prod5'])&& $_POST['qnt5'] != 0) {
 		
 	
-	$prod = $_POST["prod5"];
+	$prod5 = $_POST["prod5"];
 	
-	$qnt = $_POST["qnt5"];
+	$qnt5 = $_POST["qnt5"];
 	
-	$conn = new DatabaseUtility();
+		
+	//calcular valor de produto 5
 	
-    $conn->connect();
+	$total_prod5 = $conn->calc_sale($prod5,$qnt5);
 	
-	$prod5 = $conn->calc_sale($prod,$qnt);
+	//somar ao valor total
 	
-	echo $prod5."<br>";
+	$valortotal = $valortotal+$total_prod5;
+	
 	
 	
 	} 
 	
-	$valor_total = $prod1 + $prod2 + $prod3 + $prod4 + $prod5;
+	$user_id = 5;
+		
+	echo "Valor total R$ ".$valortotal."<br>";	
 	
-	echo "Valor total R$ ".$valor_total;
+	date_default_timezone_set("America/Bahia");
+	$data_atual = date("Y/m/d h:i:s");
+	
+	
+	$conn->encon_insert($key,$user_id,$data_atual,$valortotal);
+	
+	$conn->encon_prod_insert($key,$prod1,$qnt1,$prod2,$qnt2,$prod3,$qnt3,$prod4,$qnt4,$prod5,$qnt5);	
+	
+	
+
+	header('location: ../View/user_func.html');	
+
+
+	
+	
+
 
 
 
