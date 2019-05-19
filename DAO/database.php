@@ -2,7 +2,8 @@
 
 class DatabaseUtility{
 
-        private $dsn, $username, $password, $database, $pdo, $host;
+        private $dsn, $username, $password, $database, $host;
+		public $name, $pdo;
 
         public function __construct($host = "127.0.0.1:3306", $username ="root", $password = "", $database = "gssm"){
             $this->host = $host;
@@ -10,7 +11,14 @@ class DatabaseUtility{
             $this->username = $username;
             $this->password = $password;
             $this->database = $database;
+			
         }
+		
+		
+		public function __desconstruct (){
+			
+			
+		}
         
         
         
@@ -62,6 +70,7 @@ class DatabaseUtility{
         {
             $login = $linha['login'];
             $senha = $linha['senha'];
+			$name = $linha ['nome'];
             
             if($a == $login && $b == $senha)  {
                 
@@ -118,9 +127,9 @@ class DatabaseUtility{
 			
 		}
 		
-		public function new_prod_insert ($a,$b,$c,$d) {
+		public function new_prod_insert ($a,$b,$c,$d,$e) {
  
-            $sql = "INSERT INTO produto (ID,nome_prod,quant,marca,categoria) VALUES(DEFAULT,'$a','$b','$c','$d')";
+            $sql = "INSERT INTO produto (ID,nome_prod,quant,marca,categoria,valor_uni) VALUES(DEFAULT,'$a','$b','$c','$d','$e')";
             
             $this->pdo->query($sql);	
             
@@ -135,17 +144,43 @@ class DatabaseUtility{
 			while ($linha=$query->fetch(PDO::FETCH_ASSOC))                          
 			{  
 				echo "============================================= <br>";
+				echo "ID do Produto ".$linha['ID']."<br>";
 				echo "Nome do Produto: ".$linha['nome_prod']."<br>";
 				echo "Marca do Produto: ".$linha['marca']."<br>";
 				echo "Quantidade em Estoque: ".$linha['quant']."<br>";
 				echo "Categoria: ".$linha['categoria']."<br>";
+				echo "Valor Unitario: R$ ".$linha['valor_uni']."<br>";
 				}
-			
-			
-			
 			
 		}
 		
+		
+		public function find_prod_2 () {
+			
+
+			
+						
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		public function find_user_name (){
+		
+			return $this->name;
+	
+		}
 		
 		
 		

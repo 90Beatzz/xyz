@@ -17,9 +17,10 @@ if (!empty($_POST["nome"])&& !empty($_POST["qnt"]) && !empty($_POST["mrc"])
     $qnt = ($_POST["qnt"]);
     $mrc = ($_POST["mrc"]);
     $ctg = ($_POST["ctg"]);
+	$val = ($_POST["val"]);
 
 	
-    $este = new prod_model($nome, $qnt, $mrc, $ctg); 
+    $este = new prod_model($nome, $qnt, $mrc, $ctg,$val); 
     
 
     
@@ -32,9 +33,10 @@ if (!empty($_POST["nome"])&& !empty($_POST["qnt"]) && !empty($_POST["mrc"])
     $b = $este->GetQuantidade();
     $c = $este->GetMarca();
     $d = $este->GetCategoria();
+	$e = $este->GetValor();
     
   
-    $conn->new_prod_insert($a, $b, $c, $d,);
+    $conn->new_prod_insert($a, $b, $c, $d, $e);
 
     header("Location: ../View/user_func.html"); 
 

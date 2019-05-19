@@ -14,6 +14,9 @@ private $login;
 private $senha;
 
 
+
+
+
     public function __construct($u,$s) {
 
         $login_code = md5($u);
@@ -25,6 +28,10 @@ private $senha;
        $conn->connect();
        
        $conn->search_acess($login_code,$senha_code);
+	   
+	   $name = $conn->find_user_name();
+
+	   $conn->__desconstruct();
 
        
     }

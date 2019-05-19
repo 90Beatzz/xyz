@@ -9,10 +9,11 @@ class prod_model  {
    private $quantidade;
    private $marca;
    private $cat = [1 => "Alimento", 2=> "Bebida", 3=> "Pet", 4=> "Higiene"];
+   private $valor_unit;
    
    // Função de Construção da Classe
    
-   public function __construct($a,$b,$c,$d) {
+   public function __construct($a,$b,$c,$d,$e) {
       
        
    if ($d == 1) {
@@ -27,6 +28,7 @@ class prod_model  {
        $this->nome = $a;
        $this->quantidade = $b;
        $this->marca = $c;
+	   $this->valor_unit = $e;
       
        
    }
@@ -45,6 +47,11 @@ class prod_model  {
      
       public function GetCategoria () {
        return $this->cat;
+       
+   }
+   
+     public function GetValor () {
+       return $this->valor_unit;
        
    }
    

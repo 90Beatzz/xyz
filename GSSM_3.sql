@@ -48,15 +48,14 @@ ID int primary key not null auto_increment,
 nome_prod varchar(250) NOT NULL,
 quant INT,
 marca varchar(100),
-categoria varchar(100)
+categoria varchar(100),
+valor_uni decimal(7,2) NOT NULL
 );
 
-
-insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Feijão',100,'Mariazinha Alimentos','Alimento');
-insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Arroz',100,'Joãozinho Alimentos','Alimento');
-insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Macarrão',100,'Macarrões Saborosos','Alimento');
-insert into produto (ID,nome_prod,quant,marca,categoria) values (DEFAULT,'Carne Shark',100,'Quero carne','Alimento');
-
+insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAULT,'Feijão',100,'Mariazinha Alimentos','Alimento',20.00);
+insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAULT,'Arroz',100,'Joãozinho Alimentos','Alimento',10.00);
+insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAULT,'Macarrão',100,'Macarrões Saborosos','Alimento',25.00);
+insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAULT,'Carne Shark',100,'Quero carne','Alimento',300.20);
 
 -- A Tabela "Encom_prod" relaciona a ENCOMENDA feita pelo USUARIO a tabela de PRODUTOS VENDIDOS especificando o VALOR TOTAL
 -- Atributos:
@@ -107,7 +106,7 @@ DELIMITER ;
 
 call login;
 
-select (login),md5(senha) from usuario;
+
 
 
 DELIMITER $$
@@ -121,4 +120,19 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+DELIMITER $$
+USE `gssm`$$
+CREATE PROCEDURE `busca_prod` ()
+BEGIN
+
+	select * from produto;
+
+
+END$$
+
+DELIMITER ;
+
+
 

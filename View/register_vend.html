@@ -24,6 +24,14 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+	
+	<?PHP
+	
+	$a = iago;
+	
+	?>
+	
+	
 </head>
 
 <body>
@@ -31,10 +39,10 @@
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
                     <div class="card-body">
-                        <center> <h2 class="title">Registrar Produto XYZ </h2> </center>  
+                        <center> <h2 class="title">Registrar Venda XYZ </h2> </center>  
                     <form method="POST" action="../control/new_prod_control.php">
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Nome do Produto" name="nome">
+                            <input class="input--style-3" type="text" placeholder="<?PHP $a; ?>" name="nome">
                         </div>
                         <div class="input-group">
                             <input class="input--style-3" type="number" placeholder="Quantidade" name="qnt">
