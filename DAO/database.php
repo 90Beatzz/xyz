@@ -155,7 +155,23 @@ class DatabaseUtility{
 		}
 		
 		
-		public function find_prod_2 () {
+		public function calc_sale ($a,$b) {
+			
+			$sql = "call busca_prod";
+			
+			$query = $this->pdo->query($sql);
+			
+			while ($linha=$query->fetch(PDO::FETCH_ASSOC))                          
+			{  
+				if ($a == $linha['ID']){
+					$resultado = $b * $linha['valor_uni'];
+					return ($resultado);
+					
+					
+				}
+			
+			}
+			
 			
 
 			

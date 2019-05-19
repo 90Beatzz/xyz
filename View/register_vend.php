@@ -32,7 +32,19 @@
 	
 	<?PHP	
 
+	$_POST['prod1'] = null;	
+	$_POST['prod2'] = null;	
+	$_POST['prod3'] = null;	
+	$_POST['prod4'] = null;	
+	$_POST['prod5'] = null;	
+	$_POST['qnt1'] = null;	
+	$_POST['qnt2'] = null;	
+	$_POST['qnt3'] = null;	
+	$_POST['qnt4'] = null;	
+	$_POST['qnt5'] = null;	
+	
 
+	
 	include "../Dao/database.php";
 	$este = new DatabaseUtility();
 	$este->connect();
@@ -44,7 +56,7 @@
 	echo "<div class='card-body'>";
 	echo "<center> <h2 class='title'>Nova Venda XYZ </h2> </center>";
 	
-	echo "form method='POST' action='../control/new_sale_control.php'>";
+	echo "<form method='POST' action='../control/new_sale_control.php'>";
 	
 	echo "<div class='input-group'>";	
 	echo "<div class='rs-select2 js-select-simple select--no-search'>";
@@ -62,7 +74,7 @@
 	echo "</div>";
 	
 	echo "<div class='input-group'>";
-	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt'>";
+	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt1'>";
 	echo "</div>";
 	
 	$query = null;	
@@ -85,7 +97,7 @@
 	echo "</div>";
 	
 	echo "<div class='input-group'>";
-	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt'>";
+	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt2'>";
 	echo "</div>";
 	
 		$query = null;	
@@ -108,7 +120,7 @@
 	echo "</div>";
 	
 	echo "<div class='input-group'>";
-	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt'>";
+	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt3'>";
 	echo "</div>";
 	
 		$query = null;	
@@ -131,7 +143,7 @@
 	echo "</div>";
 	
 	echo "<div class='input-group'>";
-	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt'>";
+	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt4'>";
 	echo "</div>";
 	
 		$query = null;	
@@ -154,30 +166,23 @@
 	echo "</div>";
 	
 	echo "<div class='input-group'>";
-	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt'>";
+	echo "<input class='input--style-3' type='number' placeholder='Quantidade' name='qnt5'>";
 	echo "</div>";
+
 	
 	echo "<div class='p-t-10'>";
-	echo "<button class='btn btn--pill btn--green' type='submit'>Enviar</button>"
+	echo "<button class='btn btn--pill btn--green' type='submit'>Enviar</button>";
+	echo "</div>";
+	echo "</form>";
+
+		echo "</div>";
+	echo "</div>";
+	echo "</div>";
 	
-	
-	
-	
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	?>
 	
-	                    
+ 
                                
     
 	
