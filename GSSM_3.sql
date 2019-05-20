@@ -21,14 +21,12 @@ setor enum('Atendente','Gerente','Administrador')
 -- Na tabela encomenda 
 -- Tabela encomenda, criada pelo sistema ao concluir a venda, registrando o ID do usuario responsavel pela compra, data e horario atual 
 
-
 create table encomenda (
-ID INT primary key not null auto_increment,
+ID varchar(6),
 ID_user INT NOT NULL,
 data_pedid timestamp,
-valor_total decimal(7,2) NOT NULL,
+valor_total decimal(6,3) NOT NULL,
 constraint foreign key (ID_user) references usuario(ID)
-
 );
 
 
@@ -62,10 +60,9 @@ insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAU
 -- ID da encomenda, ID do Produto, Quantidade do Produto, ID do Usuario e Valor total da transação
 
 create table encom_prod (
-ID_encom INT NOT NULL,
+ID_encom varchar(6),
 ID_prod INT NOT NULL,
 quant_prod INT NULL,
-
 constraint foreign key (ID_encom) references encomenda(ID),
 constraint foreign key (ID_prod) references produto(ID) 
 );
@@ -82,6 +79,12 @@ insert into encom_prod values (1,1,20,1);
 -- Selecionar Usuario por nome do usuario e nome do produto
 
 select nome, nome_prod from usuario,produto join encom_prod where usuario.id = encom_prod.ID_user;
+
+select encomenda.ID as 'ID da Encomenda',usuario.nome as 'nome do usuario',produto.nome_prod as 'Nome do Produto',encomenda.valor_total as 'Valor total do Pedido',encom_prod.ID_prod from encomenda,encom_prod,produto,usuario where encomenda.ID = encom_prod.ID_encom ;
+
+select nome, nome_prod from usuario,produto,encomenda join encom_prod where usuario.id = ID_user;
+
+
 
 use gssm;
 select * from usuario;
