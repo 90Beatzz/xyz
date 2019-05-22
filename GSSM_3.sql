@@ -105,7 +105,7 @@ DROP procedure IF EXISTS `logins`;
 
 DELIMITER $$
 USE `gssm`$$
-CREATE PROCEDURE `logins` ()
+CREATE PROCEDURE `login` ()
 BEGIN
 
 	select login,senha from usuario;
