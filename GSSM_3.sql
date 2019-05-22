@@ -21,8 +21,11 @@ setor enum('Atendente','Gerente','Administrador')
 -- Na tabela encomenda 
 -- Tabela encomenda, criada pelo sistema ao concluir a venda, registrando o ID do usuario responsavel pela compra, data e horario atual 
 
+
+drop table encomenda;
+
 create table encomenda (
-ID varchar(6),
+ID varchar(6) primary key,
 ID_user INT NOT NULL,
 data_pedid timestamp,
 valor_total decimal(6,3) NOT NULL,
@@ -34,7 +37,9 @@ insert into encomenda (ID,ID_user,data_pedid,valor_total) values (DEFAULT,1,'200
 
 insert into usuario values (DEFAULT,"Iago A","032.796.035-10","15484746-51","40253-190","Admin","Admin","S","Administrador");
 
+select * from usuario;
 
+call busca_por_user();
 
 select nome, nome_prod from usuario,produto join encom_prod where usuario.id = encom_prod.ID_user;
 
@@ -49,6 +54,8 @@ marca varchar(100),
 categoria varchar(100),
 valor_uni decimal(7,2) NOT NULL
 );
+
+select * from encomenda;
 
 insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAULT,'Feijão',100,'Mariazinha Alimentos','Alimento',20.00);
 insert into produto (ID,nome_prod,quant,marca,categoria,valor_uni) values (DEFAULT,'Arroz',100,'Joãozinho Alimentos','Alimento',10.00);
@@ -117,12 +124,14 @@ USE `gssm`$$
 CREATE PROCEDURE `busca_por_user` ()
 BEGIN
 
-	select encomenda.id as 'ID da encomenda',usuario.nome as 'Usuario Responsavel', encomenda.valor_total 'Valor de compra' from usuario,encomenda where usuario.id = ID_user;
+	select encomenda.id,usuario.nome, encomenda.valor_total, usuario.setor from usuario,encomenda where usuario.id = ID_user;
 
 
 END$$
 
 DELIMITER ;
+
+call busca_por_user();
 
 
 DELIMITER $$

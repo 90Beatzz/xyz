@@ -108,7 +108,7 @@ if (!empty($_POST['prod1'])&& $_POST['qnt1'] != 0) {
 	
 	} 
 	
-	$user_id = 5;
+	$user_id = 1;
 		
 	echo "Valor total R$ ".$valortotal."<br>";	
 	
