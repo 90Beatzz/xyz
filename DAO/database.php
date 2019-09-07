@@ -137,7 +137,7 @@ class DatabaseUtility{
 
 		public function find_prod () {
 
-			$sql = "call busca_prod";
+			$sql = "select * from produto";
 
 			$query = $this->pdo->query($sql);
 
