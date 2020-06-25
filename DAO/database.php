@@ -5,7 +5,7 @@ class DatabaseUtility{
         private $dsn, $username, $password, $database, $host;
 		public $name, $pdo;
 
-        public function __construct($host = "127.0.0.1:3306", $username ="ietzz", $password = "856252", $database = "gssm"){
+        public function __construct($host = "dbserver.mysql", $username ="root", $password = "root", $database = "gssm"){
             $this->host = $host;
             $this->dsn = "mysqli:dbname=$database;host:$host";
             $this->username = $username;

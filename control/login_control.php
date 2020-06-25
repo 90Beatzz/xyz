@@ -21,7 +21,6 @@ private $senha;
 
         $login_code = md5($u);
         $senha_code = md5($s);
-        
                 
 
        $conn = new DatabaseUtility();

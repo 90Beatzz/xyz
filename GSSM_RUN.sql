@@ -15,8 +15,8 @@ moderador enum('S','N'),
 setor enum('Atendente','Gerente','Administrador')
 );
 
-
-insert into usuario (nome,cpf,rg,cep,login,senha,setor) values ('Iago Alves','333','333','333','e3afed0047b08059d0fada10f400c1e5','e3afed0047b08059d0fada10f400c1e5','Administrador');
+-- Usuario: Admin Senha: Admin
+insert into usuario (nome,cpf,rg,cep,login,senha,setor) values ('Iago Alves','333','333','333','21232f297a57a5a743894a0e4a801fc3','21232f297a57a5a743894a0e4a801fc3','Administrador');
 -- Na tabela encomenda 
 -- Tabela encomenda, criada pelo sistema ao concluir a venda, registrando o ID do usuario responsavel pela compra, data e horario atual 
 
